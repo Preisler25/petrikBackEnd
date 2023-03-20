@@ -6,10 +6,8 @@ const port = 3000
 app.get('/api/posts', (req, res) => {
     res.json(
         {
-            id: 1,
-            title: 'Post 1',
-            description: 'Content 1'
-        },
+            posts: [{id: 1,title: 'Post 1',description: 'Content 1'}, {id: 2,title: 'Post 2',description: 'Content 2'}]
+        }
     )
 })
 
