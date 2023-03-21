@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const request = require('request');
 const cheerio = require('cheerio');
+const path = require('path');
+const ejs = require('ejs');
 
 
 app.get("/api/posts", (req, res) => {
@@ -21,6 +23,14 @@ request('https://petrik.hu/', (error, response, html) => {
     });
   }
 });
+});
+
+app.get('/', (req, res) => {
+    res.render(path.join(__dirname, 'views', 'login.ejs'));
+});
+
+app.post("/api/iksz", (req, res) => {
+    console.log(req.body);
 });
 
 app.get("/api/iksz", (req, res) => {
