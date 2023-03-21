@@ -1,8 +1,29 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const request = require('request');
+const cheerio = require('cheerio');
+
 
 app.get("/api/posts", (req, res) => {
+
+request('https://petrik.hu/', (error, response, html) => {
+  if (!error && response.statusCode == 200) {
+    const $ = cheerio.load(html);
+    const divs = $('.et_pb_salvattore_content div');
+
+    console.log(`Found ${divs.length} divs with class 'et_pb_salvattore_content':`);
+    divs.each((i, div) => {
+      console.log('====================================');
+      console.log(`Div ${i}:`);
+      console.log('====================================');
+      console.log($(div).html());
+    });
+  }
+});
+});
+
+app.get("/api/iksz", (req, res) => {
   res.json({
     posts: [
         { id: 1, title: "Post 1", description: "Content 1" },
