@@ -26,6 +26,7 @@ request('https://petrik.hu/', (error, response, html) => {
 });
 
 app.get('/', (req, res) => {
+    console.log(__dirname);
     res.render(path.join(__dirname, 'views', 'login.ejs'));
 });
 
