@@ -4,8 +4,9 @@ const port = 3000;
 const request = require('request');
 const cheerio = require('cheerio');
 const path = require('path');
-const ejs = require('ejs');
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/views'));
 
 app.get("/api/posts", (req, res) => {
 
@@ -26,12 +27,12 @@ request('https://petrik.hu/', (error, response, html) => {
 });
 
 app.get('/', (req, res) => {
-    console.log(__dirname);
-    res.render(path.join(__dirname, 'views', 'login.ejs'));
+    res.render('index.ejs');
 });
 
-app.post("/api/iksz", (req, res) => {
+app.post('/api/iksz', (req, res) => {
     console.log(req.body);
+    res.redirect('/');
 });
 
 app.get("/api/iksz", (req, res) => {

@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
     <title>Document</title>
 </head>
 <body>
-    <form action="/api/iksz" method="post">
-        <input type="text" name="name" id="name">
-        <input type="text" name="age" id="age">
-        <input type="submit" value="Submit">
-    </form>
+    <div class="login">
+        <form action="/api/iksz" method="POST">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login" class="cursor-pointer">
+        </form>
+    </div>
 </body>
 </html>
