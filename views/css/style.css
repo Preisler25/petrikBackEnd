@@ -7,8 +7,18 @@ div.login {
     padding: 20px;
     width: 300px;
 }
+form {
+    margin: auto;
+    width: 221.6px;
+}
 
-form.login {
-    margin: 0 auto;
+input {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px;
     width: 200px;
 }
