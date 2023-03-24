@@ -1,12 +1,13 @@
 <?php
-    include '../db.php';
+    require '../db.php';
 
-    require 'db.php';
+    echo($_GET["username"]);
+
     // Az adatbáziskapcsolat használata
     $conn = OpenCon();
     
     // Adatok lekérdezése a táblából
-    $sql = "SELECT * FROM example_table";
+    $sql = "SELECT id, name, email FROM users";
     $result = $conn->query($sql);
     
     // Eredmények megjelenítése
