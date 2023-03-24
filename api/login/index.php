@@ -22,9 +22,8 @@
     function sql($conn, String $sql)
     {
         if ($conn->query($sql) === TRUE) {
-            each("win")
         } else {
-            each("error")
+            echo("error");
          }
     }
 
