@@ -1,6 +1,7 @@
 <?php
     // Geting data from Get
     $name = $_GET['name'];
+    $password = $_GET['password'];
 
     // Create connection
     function OpenCon()
@@ -8,7 +9,7 @@
         $dbhost = "192.168.1.199:3306";
         $dbuser = "root";
         $dbpass = "";
-        $db = "ikst";
+        $db = "petrikapp";
         $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 
         return $conn;
@@ -32,6 +33,8 @@
 
     //main
     $conn = OpenCon();
+    $sql = "INSERT INTO `user` (`name`, `email`, `password`, `osztaly`) VALUES ('$name', 'test@gmail.com', '$password', '9.NY');";
 
-
+    sql($conn, $sql);
+    CloseCon($conn);
 ?>
