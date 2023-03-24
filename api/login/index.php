@@ -18,15 +18,6 @@
             $conn -> close();
         }
 
-    // Insert data
-    function sql($conn, String $sql)
-    {
-        if ($conn->query($sql) === TRUE) {
-        } else {
-            echo("error");
-         }
-    }
-
     $conn = OpenCon();
 
      // Geting data from Get
@@ -34,18 +25,20 @@
      $password = $_GET['password'];
 
     //main
-    $sql = "INSERT INTO `user` (`name`, `email`, `password`, `osztaly`) VALUES ('$name', 'test@gmail.com', '$password', '9.NY');";
+    $sql = "SELECT * FROM users WHERE name = '$name' AND password = '$password'";
     
-    // send back user
+    $result = $conn->query($sql);
 
-    $obj = array(
-        "name" => $name,
-        "password" => $password
-    );
+    if($result->num_rows > 0){
+        $obj = array('status' => TRUE);
+    }else{
+        $obj = array('status' => FALSE);
+    }
+
+
 
     header('Content-Type: application/json');
     echo json_encode($obj);
 
-    sql($conn, $sql);
     CloseCon($conn);
 ?>
