@@ -1,12 +1,9 @@
 <?php
-    // Geting data from Get
-    $name = $_GET['name'];
-    $password = $_GET['password'];
-
+   
     // Create connection
     function OpenCon()
     {
-        $dbhost = "192.168.1.199:3306";
+        $dbhost = "localhost:3306";
         $dbuser = "root";
         $dbpass = "";
         $db = "petrikapp";
@@ -25,15 +22,30 @@
     function sql($conn, String $sql)
     {
         if ($conn->query($sql) === TRUE) {
-          echo "success";
+            each("win")
         } else {
-          echo "error: " . $conn->error;
+            each("error")
          }
     }
 
-    //main
     $conn = OpenCon();
+
+     // Geting data from Get
+     $name = $_GET['name'];
+     $password = $_GET['password'];
+
+    //main
     $sql = "INSERT INTO `user` (`name`, `email`, `password`, `osztaly`) VALUES ('$name', 'test@gmail.com', '$password', '9.NY');";
+    
+    // send back user
+
+    $obj = array(
+        "name" => $name,
+        "password" => $password
+    );
+
+    header('Content-Type: application/json');
+    echo json_encode($obj);
 
     sql($conn, $sql);
     CloseCon($conn);
