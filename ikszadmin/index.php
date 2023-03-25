@@ -9,11 +9,11 @@
 </head>
 <body>
 <div class="login">
-        <form action="../api/iksz/index.php" method="POST">
-            <input type="number" name="id" placeholder="ID">
+        <form action="../api/regiksz/index.php" method="POST">
+            <input type="number" name="max" placeholder="MaxFő">
             <input type="text" name="title" placeholder="Cím">
             <input type="text" name="description" placeholder="Leírás">
-            <input type="text" name="image" placeholder="Kép URL">
+            <input type="text" name="image" placeholder="Kép URL" value="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
             <input type="submit" value="Feltölt" class="cursor-pointer">
         </form>
     </div>
