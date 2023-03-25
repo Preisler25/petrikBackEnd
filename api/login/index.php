@@ -30,9 +30,9 @@
     $result = $conn->query($sql);
 
     if($result->num_rows > 0){
-        $obj = array('status' => TRUE);
+        $obj = array('status' => 'TRUE');
     }else{
-        $obj = array('status' => FALSE);
+        $obj = array('status' => 'FALSE');
     }
 
 
