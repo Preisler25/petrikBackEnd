@@ -25,7 +25,7 @@
      $password = $_GET['password'];
 
     //main
-    $sql = "SELECT * FROM users WHERE name = '$name' AND password = '$password'";
+    $sql = "SELECT * FROM user WHERE name = '$name' AND password = '$password'";
     
     $result = $conn->query($sql);
 
