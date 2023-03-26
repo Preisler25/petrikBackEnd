@@ -13,10 +13,24 @@
     
     $result = $conn->query($sql);
 
+    
+
     if($result->num_rows > 0){
-        $obj = array('status' => TRUE, 'auth' => $name);
+
+        
+
+        $row = $result->fetch_assoc();
+
+        $user = array(
+            'name' => $row['name'],
+            'email' => $row['email'],
+            'osztaly' => $row['osztaly']
+            'auth' =>
+        );
+
+        $obj = array('status' => TRUE, 'user' => $user);
     }else{
-        $obj = array('status' => FALSE, 'auth' => "");
+        $obj = array('status' => FALSE, 'user' => "");
     }
 
 
