@@ -14,7 +14,7 @@
     $result = $conn->query($sql);
 
     if($result->num_rows > 0){
-        $obj = array('status' => TRUE);
+        $obj = array('status' => TRUE, 'auth_token' => '123456789');
     }else{
         $obj = array('status' => FALSE);
     }
