@@ -16,11 +16,6 @@
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        echo $name;
-        echo $password;
-        echo $email;
-        echo $osztaly;
-
         $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
         $res = $conn->query($sql);
         if($res){
@@ -31,12 +26,14 @@
             );
 
             $obj = array('status' => TRUE, 'user' => $user);
+            each($obj);
         }else{
             $obj = array('status' => FALSE);
+            each($obj);
         }
     }
     else{
         $obj = array('status' => FALSE);
+        each($obj);
     }
-
 ?>
