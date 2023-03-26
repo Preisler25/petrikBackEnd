@@ -5,17 +5,23 @@
 
     $conn = OpenCon();
 
-    $name = $_POST['name'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $osztaly = $_POST['osztaly'];
+    $name = $_GET['name'];
+    $password = $_GET['password'];
+    $email = $_GET['email'];
+    $osztaly = $_GET['osztaly'];
 
     $valid = chUser($name, $conn);
+
 
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`, `auth`) VALUES ('$name', '$password', '$email', '$osztaly', '$auth');";
+        echo $name;
+        echo $password;
+        echo $email;
+        echo $osztaly;
+
+        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
         $res = $conn->query($sql);
         if($res){
 
