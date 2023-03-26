@@ -1,6 +1,7 @@
 <?php
 
     include_once '../../util/db.php';
+    include_once '../../util/ikszLogic.php';
 
     $conn = OpenCon();
 
@@ -14,7 +15,7 @@
     while($row = $res->fetch_assoc()) {
         $posts[] = [
             "id" => intval($row['id']),
-            "max" => intval($row['max']),
+            "free_spaces" => intval(FreeSpacesLeft($row['title'], $conn)),
             "title" => $row['title'],
             "description" => $row['description'],
             "img_url" => $row['img_url']
