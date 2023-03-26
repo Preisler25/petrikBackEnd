@@ -1,6 +1,6 @@
 <?php
-   
     require_once '../../util/db.php';
+
 
     $conn = OpenCon();
 
@@ -8,6 +8,8 @@
      $name = $_GET['name'];
      $password = $_GET['password'];
 
+
+     $password = password_hash($password, PASSWORD_DEFAULT);
     //main
     $sql = "SELECT * FROM user WHERE name = '$name' AND password = '$password'";
     
@@ -23,14 +25,12 @@
 
         $user = array(
             'name' => $row['name'],
-            'email' => $row['email'],
-            'osztaly' => $row['osztaly']
-            'auth' =>
+            'osztaly' => $row['osztaly'],
         );
 
         $obj = array('status' => TRUE, 'user' => $user);
     }else{
-        $obj = array('status' => FALSE, 'user' => "");
+        $obj = array('status' => FALSE);
     }
 
 

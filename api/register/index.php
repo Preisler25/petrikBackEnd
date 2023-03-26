@@ -13,16 +13,24 @@
     $valid = chUser($name, $conn);
 
     if($valid){
-        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`, `auth`) VALUES ('$name', '$password', '$email', '$osztaly', '$auth');";
         $res = $conn->query($sql);
         if($res){
-            $obj = array('status' => TRUE, 'auth' => $name);
+
+            $user = array(
+                'name' => $name,
+                'osztaly' => $osztaly,
+            );
+
+            $obj = array('status' => TRUE, 'user' => $user);
         }else{
-            $obj = array('status' => FALSE 'auth' => "");
+            $obj = array('status' => FALSE);
         }
     }
     else{
-        $obj = array('status' => FALSE, 'auth' => "");
+        $obj = array('status' => FALSE);
     }
 
 ?>
