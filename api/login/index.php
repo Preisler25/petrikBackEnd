@@ -1,6 +1,6 @@
 <?php
     require_once '../../util/db.php';
-
+    require_once '../../util/logLogic.php';
 
     $conn = OpenCon();
 
@@ -8,34 +8,30 @@
      $name = $_GET['name'];
      $password = $_GET['password'];
 
-
-     $password = password_hash($password, PASSWORD_DEFAULT);
-     echo $password;
+    $valid = chPass($conn, $name, $password);
     //main
-    $sql = "SELECT * FROM user WHERE name = '$name' AND password = '$password'";
-    
-    $result = $conn->query($sql);
+    if($valid){
+        $sql = "SELECT * FROM user WHERE name = '$name'";
+        $result = $conn->query($sql);
 
-    
+        if($result->num_rows > 0){
 
-    if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
 
-        
+            $user = array(
+                'name' => $row['name'],
+                'osztaly' => $row['osztaly'],
+            );
 
-        $row = $result->fetch_assoc();
-
-        $user = array(
-            'name' => $row['name'],
-            'osztaly' => $row['osztaly'],
-        );
-
-        $obj = array('status' => TRUE, 'user' => $user);
-    }else{
+            $obj = array('status' => TRUE, 'user' => $user);
+        }else{
+            $obj = array('status' => FALSE);
+        }
+    }
+    else{
         $obj = array('status' => FALSE);
     }
-
-
-
+    
     header('Content-Type: application/json');
     echo json_encode($obj);
 
