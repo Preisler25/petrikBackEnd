@@ -10,6 +10,7 @@
 
 
      $password = password_hash($password, PASSWORD_DEFAULT);
+     echo $password;
     //main
     $sql = "SELECT * FROM user WHERE name = '$name' AND password = '$password'";
     

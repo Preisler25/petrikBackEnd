@@ -26,14 +26,14 @@
             );
 
             $obj = array('status' => TRUE, 'user' => $user);
-            each($obj);
         }else{
             $obj = array('status' => FALSE);
-            each($obj);
         }
     }
     else{
         $obj = array('status' => FALSE);
-        each($obj);
     }
+
+    header('Content-Type: application/json');
+    echo json_encode($obj);
 ?>
