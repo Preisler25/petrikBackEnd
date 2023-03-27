@@ -27,11 +27,23 @@
 
             $obj = array('status' => TRUE, 'user' => $user);
         }else{
-            $obj = array('status' => FALSE);
+
+            $user = array(
+                'name' => 'Guest',
+                'osztaly' => 'Nincs osztály',
+            );
+
+            $obj = array('status' => FALSE, 'user' => $user);
         }
     }
     else{
-        $obj = array('status' => FALSE);
+
+        $user = array(
+            'name' => 'Guest',
+            'osztaly' => 'Nincs osztály',
+        );
+
+        $obj = array('status' => FALSE, 'user' => $user);
     }
 
     header('Content-Type: application/json');
