@@ -25,10 +25,22 @@
 
             $obj = array('status' => TRUE, 'user' => $user);
         }else{
+
+            $user = array(
+                'name' => 'Guest',
+                'osztaly' => 'Nincs osztály',
+            );
+
             $obj = array('status' => FALSE);
         }
     }
     else{
+
+        $user = array(
+            'name' => 'Guest',
+            'osztaly' => 'Nincs osztály',
+        );
+
         $obj = array('status' => FALSE);
     }
     
