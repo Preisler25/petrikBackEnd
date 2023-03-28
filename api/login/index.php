@@ -18,9 +18,12 @@
 
             $row = $result->fetch_assoc();
 
+            $key = password_hash($row['email'], PASSWORD_DEFAULT);
+
             $user = array(
                 'name' => $row['name'],
                 'osztaly' => $row['osztaly'],
+                'key' => $key,
             );
 
             $obj = array('status' => TRUE, 'user' => $user);

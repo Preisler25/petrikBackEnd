@@ -22,4 +22,16 @@ function FreeSpacesLeft($title, $conn)
         }
     }
 
+    function chUserIn($title, $id, $conn)
+    {
+        $sql = "SELECT * FROM `$title` WHERE `user_id` = '$id'";
+        $res = $conn->query($sql);
+        if ($res->num_rows > 0) {
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }
+
 ?>
