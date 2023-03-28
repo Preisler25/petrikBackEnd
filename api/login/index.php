@@ -31,7 +31,7 @@
                 'osztaly' => 'Nincs osztály',
             );
 
-            $obj = array('status' => FALSE);
+            $obj = array('status' => FALSE, 'user' => $user);
         }
     }
     else{
@@ -41,7 +41,7 @@
             'osztaly' => 'Nincs osztály',
         );
 
-        $obj = array('status' => FALSE);
+        $obj = array('status' => FALSE, 'user' => $user);
     }
     
     header('Content-Type: application/json');
