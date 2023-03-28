@@ -25,7 +25,8 @@
             
             $posts = array();
             while($row = $res->fetch_assoc()) {
-                if(chUserIn($row['title'], $id1, $conn)){
+                $ttl = $row['title'];
+                if(chUserIn($ttl, $id1, $conn)){
                     $posts[] = [
                         "id" => intval($row['id']),
                         "free_spaces" => intval(FreeSpacesLeft($row['title'], $conn)),
