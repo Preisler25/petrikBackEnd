@@ -32,6 +32,7 @@
             $user = array(
                 'name' => '',
                 'osztaly' => '',
+                'key' => '',
             );
 
             $obj = array('status' => FALSE, 'user' => $user);
@@ -42,6 +43,7 @@
         $user = array(
             'name' => '',
             'osztaly' => '',
+            'key' => '',
         );
 
         $obj = array('status' => FALSE, 'user' => $user);
