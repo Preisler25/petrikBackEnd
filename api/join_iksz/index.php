@@ -34,23 +34,14 @@
                 $result = $conn->query($sql);
 
                 if($result){
-                    $user = array(
-                        'name' => $user_name,
-                        'osztaly' => $user_osztaly,
-                    );
-        
-                    $obj = array('status' => TRUE, 'user' => $user);
+                    $obj = array('status' => TRUE);
         
                     header('Content-Type: application/json');
                     echo json_encode($obj);
                 }else{
-                    $user = array(
-                        'name' => '',
-                        'osztaly' => '',
-                    );
+
                     $obj = array(
                     'status' => FALSE,
-                    'user' => $user,
                 );
         
                     header('Content-Type: application/json');

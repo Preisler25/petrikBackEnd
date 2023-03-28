@@ -19,31 +19,13 @@
         $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
         $res = $conn->query($sql);
         if($res){
-
-            $user = array(
-                'name' => $name,
-                'osztaly' => $osztaly,
-            );
-
-            $obj = array('status' => TRUE, 'user' => $user);
+            $obj = array('status' => TRUE);
         }else{
-
-            $user = array(
-                'name' => '',
-                'osztaly' => '',
-            );
-
-            $obj = array('status' => FALSE, 'user' => $user);
+            $obj = array('status' => FALSE);
         }
     }
     else{
-
-        $user = array(
-            'name' => '',
-            'osztaly' => '',
-        );
-
-        $obj = array('status' => FALSE, 'user' => $user);
+        $obj = array('status' => FALSE);
     }
 
     header('Content-Type: application/json');
