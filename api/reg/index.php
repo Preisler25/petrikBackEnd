@@ -29,8 +29,8 @@
         }else{
 
             $user = array(
-                'name' => 'Guest',
-                'osztaly' => 'Nincs osztály',
+                'name' => '',
+                'osztaly' => '',
             );
 
             $obj = array('status' => FALSE, 'user' => $user);
@@ -39,8 +39,8 @@
     else{
 
         $user = array(
-            'name' => 'Guest',
-            'osztaly' => 'Nincs osztály',
+            'name' => '',
+            'osztaly' => '',
         );
 
         $obj = array('status' => FALSE, 'user' => $user);
