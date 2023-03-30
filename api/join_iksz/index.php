@@ -4,8 +4,8 @@
 
     $conn = OpenCon();
 
-    $name = $_POST['name'];
-    $key = $_POST['key'];
+    $name = $_GET['name'];
+    $key = $_GET['key'];
 
     $sql = "Select * from user where name = '$name'";
     $res = $conn->query($sql);
@@ -18,7 +18,7 @@
 
         $valid = password_verify($user_osztaly, $key);
 
-        $ik = $_POST['ik'];
+        $ik = $_GET['ik'];
     
         if($valid){
     
