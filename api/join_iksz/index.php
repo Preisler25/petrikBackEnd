@@ -6,20 +6,19 @@
 
     $name = $_GET['name'];
     $key = $_GET['key'];
+    $ik = $_GET['ik'];
 
     $sql = "Select * from user where name = '$name'";
     $res = $conn->query($sql);
 
     if($res->num_rows > 0){
         $row = $res->fetch_assoc();
-        $user_id = $row['id'];
-        $user_osztaly = $row['osztaly'];
-        $user_name = $row['name'];
+        $email = $row['email'];
+        $name = $row['name'];
 
-        $valid = password_verify($user_osztaly, $key);
 
-        $ik = $_GET['ik'];
-    
+        $valid = password_verify($email, $key);
+
         if($valid){
     
             $sql = "Select * from user where name = '$name'";
