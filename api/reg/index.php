@@ -10,9 +10,12 @@
     $email = $_GET['email'];
     $osztaly = $_GET['osztaly'];
 
-    $valid = chUser($name, $conn);
 
+    $valid = chUser($conn, $name);
 
+    //echo $valid;
+
+    /* 
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -52,6 +55,10 @@
         $obj = array('status' => FALSE, 'user' => $user);
     }
 
+    CloseCon($conn);
+
     header('Content-Type: application/json');
     echo json_encode($obj);
+
+    */
 ?>
