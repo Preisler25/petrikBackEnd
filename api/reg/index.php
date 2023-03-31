@@ -19,13 +19,37 @@
         $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
         $res = $conn->query($sql);
         if($res){
-            $obj = array('status' => TRUE, 'message' => 'Sikeres regisztráció!');
+
+            $key = password_hash($email, PASSWORD_DEFAULT);
+
+            $user = array(
+                'name' => $name,
+                'osztaly' => $osztaly
+                'key' => $key
+            );
+            )
+
+            $obj = array('status' => TRUE, 'user' => $user);
         }else{
-            $obj = array('status' => FALSE, 'message' => 'Sikertelen regisztráció!');
+
+            $user = array(
+                'name' => ''
+                'osztaly' => ''
+                'key' => ''
+            )
+
+            $obj = array('status' => FALSE, 'user' => $user);
         }
     }
     else{
-        $obj = array('status' => FALSE, 'message' => 'A felhasználónév már foglalt!');
+
+        $user = array(
+            'name' => ''
+            'osztaly' => ''
+            'key' => ''
+        )
+
+        $obj = array('status' => FALSE, 'user' => $user);
     }
 
     header('Content-Type: application/json');
