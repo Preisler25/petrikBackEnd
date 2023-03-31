@@ -19,13 +19,13 @@
         $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
         $res = $conn->query($sql);
         if($res){
-            $obj = array('status' => TRUE);
+            $obj = array('status' => TRUE, 'message' => 'Sikeres regisztráció!');
         }else{
-            $obj = array('status' => FALSE);
+            $obj = array('status' => FALSE, 'message' => 'Sikertelen regisztráció!');
         }
     }
     else{
-        $obj = array('status' => FALSE);
+        $obj = array('status' => FALSE, 'message' => 'A felhasználónév már foglalt!');
     }
 
     header('Content-Type: application/json');
