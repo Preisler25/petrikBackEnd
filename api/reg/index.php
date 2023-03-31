@@ -12,9 +12,6 @@
 
 
     $valid = chUser($conn, $name);
-
-    echo $valid;
-
     
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
