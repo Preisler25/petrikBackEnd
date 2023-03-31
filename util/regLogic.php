@@ -12,15 +12,12 @@
         echo($num_of_rows);
 
         if ($num_of_rows > 0) {
-            echo("nem")
             return FALSE;
         } else {
-            echo("igen")
             return TRUE;
         }
     }
 
     CloseCon($conn);
 
-    */
 ?>

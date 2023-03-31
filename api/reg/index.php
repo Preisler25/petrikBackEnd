@@ -13,9 +13,9 @@
 
     $valid = chUser($conn, $name);
 
-    //echo $valid;
+    echo $valid;
 
-    /* 
+    
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -27,19 +27,18 @@
 
             $user = array(
                 'name' => $name,
-                'osztaly' => $osztaly
-                'key' => $key
+                'osztaly' => $osztaly,
+                'key' => $key,
             );
-            )
 
             $obj = array('status' => TRUE, 'user' => $user);
         }else{
 
             $user = array(
-                'name' => ''
-                'osztaly' => ''
-                'key' => ''
-            )
+                'name' => '',
+                'osztaly' => '',
+                'key' => '',
+            );
 
             $obj = array('status' => FALSE, 'user' => $user);
         }
@@ -47,10 +46,10 @@
     else{
 
         $user = array(
-            'name' => ''
-            'osztaly' => ''
-            'key' => ''
-        )
+            'name' => '',
+            'osztaly' => '',
+            'key' => '',
+        );
 
         $obj = array('status' => FALSE, 'user' => $user);
     }
@@ -60,5 +59,4 @@
     header('Content-Type: application/json');
     echo json_encode($obj);
 
-    */
 ?>
