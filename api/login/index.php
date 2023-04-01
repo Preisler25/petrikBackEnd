@@ -24,6 +24,7 @@
                 'name' => $row['name'],
                 'osztaly' => $row['osztaly'],
                 'key' => $key,
+                'fullname' => $row['fullname'],
             );
 
             $obj = array('status' => TRUE, 'user' => $user);
@@ -33,6 +34,7 @@
                 'name' => '',
                 'osztaly' => '',
                 'key' => '',
+                'fullname' => '',
             );
 
             $obj = array('status' => FALSE, 'user' => $user);
@@ -44,6 +46,7 @@
             'name' => '',
             'osztaly' => '',
             'key' => '',
+            'fullname' => '',
         );
 
         $obj = array('status' => FALSE, 'user' => $user);
