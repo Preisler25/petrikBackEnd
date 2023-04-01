@@ -17,7 +17,7 @@
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO `user` (`fullname`,`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly','$fullname');";
+        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`,`fullname`) VALUES ('$name', '$password', '$email', '$osztaly','$fullname');";
         $res = $conn->query($sql);
         if($res){
             $obj = array('status' => TRUE);
