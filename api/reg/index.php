@@ -9,51 +9,26 @@
     $password = $_GET['password'];
     $email = $_GET['email'];
     $osztaly = $_GET['osztaly'];
+    $fullname = $_GET['fullname'];
+
+    $valid = chUser($name, $conn);
 
 
-    $valid = chUser($conn, $name);
-    
     if($valid){
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly');";
+        $sql = "INSERT INTO `user` (`fullname`,`name`, `password`, `email`, `osztaly`) VALUES ('$name', '$password', '$email', '$osztaly','$fullname');";
         $res = $conn->query($sql);
         if($res){
-
-            $key = password_hash($email, PASSWORD_DEFAULT);
-
-            $user = array(
-                'name' => $name,
-                'osztaly' => $osztaly,
-                'key' => $key,
-            );
-
-            $obj = array('status' => TRUE, 'user' => $user);
+            $obj = array('status' => TRUE);
         }else{
-
-            $user = array(
-                'name' => '',
-                'osztaly' => '',
-                'key' => '',
-            );
-
-            $obj = array('status' => FALSE, 'user' => $user);
+            $obj = array('status' => FALSE);
         }
     }
     else{
-
-        $user = array(
-            'name' => '',
-            'osztaly' => '',
-            'key' => '',
-        );
-
-        $obj = array('status' => FALSE, 'user' => $user);
+        $obj = array('status' => FALSE);
     }
-
-    CloseCon($conn);
 
     header('Content-Type: application/json');
     echo json_encode($obj);
-
 ?>
