@@ -9,7 +9,6 @@
         $res = $conn->query($sql);
 
         $num_of_rows = $res->num_rows; 
-        echo($num_of_rows);
 
         if ($num_of_rows > 0) {
             return FALSE;
