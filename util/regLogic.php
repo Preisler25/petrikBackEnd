@@ -3,7 +3,7 @@
     include_once 'db.php';
     $conn = OpenCon();
 
-    function chUser($conn, $name)
+    function chUser($name, $conn)
     {
         $sql = "SELECT * FROM user WHERE name = '$name'";
         $res = $conn->query($sql);
