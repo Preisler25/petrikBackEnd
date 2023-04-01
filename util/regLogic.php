@@ -1,22 +1,17 @@
 <?php
+function chUser($name, $conn)
+{
+    $stmt = $conn->prepare("SELECT * FROM user WHERE name = ?");
+    $stmt->bind_param("s", $name);
+    $stmt->execute();
 
-    include_once 'db.php';
-    $conn = OpenCon();
+    $res = $stmt->get_result();
+    $num_of_rows = $res->num_rows;
 
-    function chUser($name, $conn)
-    {
-        $sql = "SELECT * FROM user WHERE name = '$name'";
-        $res = $conn->query($sql);
-
-        $num_of_rows = $res->num_rows; 
-
-        if ($num_of_rows > 0) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+    if ($num_of_rows > 0) {
+        return false;
+    } else {
+        return true;
     }
-
-    CloseCon($conn);
-
+}
 ?>
