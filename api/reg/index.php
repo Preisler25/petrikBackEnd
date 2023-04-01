@@ -20,15 +20,43 @@
         $sql = "INSERT INTO `user` (`name`, `password`, `email`, `osztaly`,`fullname`) VALUES ('$name', '$password', '$email', '$osztaly','$fullname');";
         $res = $conn->query($sql);
         if($res){
-            $obj = array('status' => TRUE);
+            $key = password_hash($email, PASSWORD_DEFAULT);
+
+            $user = array(
+                'name' => $name,
+                'osztaly' => $osztaly,
+                'key' => $key,
+                'fullname' => $fullname,
+            );
+
+            $obj = array('status' => TRUE, 'user' => $user);
         }else{
-            $obj = array('status' => FALSE);
+
+            $user = array(
+                'name' => '',
+                'osztaly' => '',
+                'key' => '',
+                'fullname' => '',
+            );
+
+            $obj = array('status' => FALSE, 'user' => $user);
         }
     }
     else{
-        $obj = array('status' => FALSE);
+
+        $user = array(
+            'name' => '',
+            'osztaly' => '',
+            'key' => '',
+            'fullname' => '',
+        );
+
+        $obj = array('status' => FALSE, 'user' => $user);
     }
+
+    CloseCon($conn);
 
     header('Content-Type: application/json');
     echo json_encode($obj);
+
 ?>
