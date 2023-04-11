@@ -8,20 +8,6 @@ $conn = OpenCon();
 $name = $_GET['name'];
 $password = $_GET['password'];
 
-// validating password
-include_once '../../util/passwordValidation.php';
-if(!validatePassword($password)){
-    $user = array(
-        'name' => '',
-        'osztaly' => '',
-        'key' => '',
-        'fullname' => '',
-    );
-    $obj = array('status' => FALSE, 'user' => $user);
-    header('Content-Type: application/json');
-    echo json_encode($obj);
-    exit();
-}
 
 $valid = chPass($conn, $name, $password);
 

@@ -2,28 +2,22 @@
 
     require_once '../../util/db.php';
     require_once '../../util/regLogic.php';
-    require_once '../../util/passwordValidation.php';
 
     // Connect to the database
     $conn = OpenCon();
 
     // Validate and sanitize input data
-    $name = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
+    $name = $_GET['name'];
     $password = $_GET['password'];
-    $email = filter_var($_GET['email'], FILTER_SANITIZE_EMAIL);
-    $osztaly = filter_var($_GET['osztaly'], FILTER_SANITIZE_STRING);
-    $fullname = filter_var($_GET['fullname'], FILTER_SANITIZE_STRING);
+    $email = $_GET['email'];
+    $osztaly = $_GET['osztaly'];
+    $fullname = $_GET['fullname'];
 
     // Check if username is already taken
     $valid = chUser($name, $conn);
 
     if($valid){
 
-        // Validate password strength
-        $passwordValidation = new PasswordValidation();
-        $passwordStrength = $passwordValidation->validate($password);
-
-        if($passwordStrength->isValid()){
 
             // Hash the password with a strong algorithm
             $passwordHash = password_hash($password, PASSWORD_ARGON2ID);
@@ -74,19 +68,6 @@
 
             $obj = array('status' => FALSE, 'user' => $user, 'message' => 'Password does not meet requirements');
         }
-    }
-    else{
-
-        // Create a failure response with empty user object
-        $user = array(
-            'name' => '',
-            'osztaly' => '',
-            'key' => '',
-            'fullname' => '',
-        );
-
-        $obj = array('status' => FALSE, 'user' => $user, 'message' => 'Username is already taken');
-    }
 
     // Close the database connection
     CloseCon($conn);
