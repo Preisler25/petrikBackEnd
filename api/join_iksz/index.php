@@ -33,7 +33,7 @@
                 $result = $conn->query($sql);
 
                 if($result){
-                    $obj = array('status' => TRUE);
+                    $obj = array('status' => TRUE, 'message' => 'Success');
         
                     header('Content-Type: application/json');
                     echo json_encode($obj);
@@ -41,6 +41,7 @@
 
                     $obj = array(
                     'status' => FALSE,
+                    'message' => 'Error'
                 );
         
                     header('Content-Type: application/json');
